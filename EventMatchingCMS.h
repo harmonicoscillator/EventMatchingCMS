@@ -49,7 +49,7 @@ void EventMatchingCMS::addEvent(long long event, long long lumi, long long run, 
   addKey(key, entryNumber);
 }
 
-long long retrieveEvent(long long event, long long lumi, long long run)
+long long EventMatchingCMS::retrieveEvent(long long event, long long lumi, long long run)
 {
   long long key = makeKey(event, lumi, run);
 
