@@ -8,6 +8,11 @@
 // Once the map is completed, begin your analysis loop and retrieve
 // matching entries from the first file by calling retrieveKey with
 // event info from the second file.
+//
+// The matcher will return -1 in the event of no matching event.
+// The matcher does not allow duplicate entries. Keys are removed
+// from the map after retrieval, preventing duplicates on both
+// sides of the transaction.
 
 #include <map>
 
@@ -37,7 +42,7 @@ long long EventMatchingCMS::makeKey(long long event, long long lumi, long long r
   return (10000000000000000*run + 10000000000*lumi + event);
 }
 
-void addKey(long long key, long long entryNumber)
+void EventMatchingCMS::addKey(long long key, long long entryNumber)
 {
   std::pair<long long, long long> p(key, entryNumber);
   kmap.insert(p);
